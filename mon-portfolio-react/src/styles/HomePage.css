@@ -1,0 +1,135 @@
+/* HomePage.css */
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	font-family: 'Roboto', sans-serif;
+  }
+
+  section {
+	max-width: 800px;
+	width: 100%;
+	margin-bottom: 40px;
+	text-align: center;
+  }
+
+  h2 {
+	color: rgb(139, 76, 175);
+	margin-bottom: 20px;
+	font-size: 2em;
+  }
+
+  p {
+	color: #333;
+	line-height: 1.6;
+	font-size: 1em;
+  }
+
+  .assets-images,
+  .call-to-action {
+	background-color: #f9f9f9;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 20px;
+  }
+
+  .gallery-item {
+	text-align: center;
+  }
+
+  .gallery-item img {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+	margin-bottom: 10px;
+  }
+
+  .gallery-item p {
+	margin: 0;
+	font-size: 0.9em;
+	color: #555;
+  }
+
+  .donate-button {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	font-size: 1em;
+	transition: background-color 0.3s ease;
+  }
+
+  .donate-button:hover {
+	background-color: #45a049;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+	h2 {
+	  font-size: 1.5em;
+	}
+
+	p {
+	  font-size: 0.9em;
+	}
+
+	.gallery-item p {
+	  font-size: 0.8em;
+	}
+  }
+  .campaigns ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding: 0;
+	list-style-type: none;
+  }
+
+  .campaign-card {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s;
+	width: calc(33.333% - 1rem); /* Trois cartes par ligne */
+  }
+
+  .campaign-card:hover {
+	transform: scale(1.05);
+  }
+
+  .campaign-card img {
+	width: 100%;
+	height: auto;
+	display: block;
+  }
+
+  .campaign-card .card-content {
+	padding: 1rem;
+  }
+
+  .campaign-card h3 {
+	font-size: 1.25rem;
+	margin-top: 0.5rem;
+  }
+
+  .campaign-card p {
+	font-size: 1rem;
+	color: #555;
+  }
+
+  .campaign-card .amount {
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #28a745;
+  }

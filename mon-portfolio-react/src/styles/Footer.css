@@ -1,0 +1,35 @@
+/* Footer.css */
+
+body {
+	display:contents;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+  }
+
+  footer {
+	width: 100%;
+	padding: 20px;
+	background-color: #4CAF50;
+	color: white;
+	text-align: center;
+	box-shadow: 0 -2px 4px #4CAF50;
+	margin-top: auto; /* Pousse le pied de page vers le bas */
+  }
+
+  footer p {
+	margin: 0;
+	font-size: 1em;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+	footer {
+	  padding: 15px;
+	}
+
+	footer p {
+	  font-size: 0.9em;
+	}
+  }
+

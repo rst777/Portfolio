@@ -1,0 +1,31 @@
+/* CampaignSelector.css */
+
+#campaignId {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #fff;
+  color: #4CAF50;
+  transition: border-color 0.3s ease;
+}
+
+#campaignId:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+#campaignId option {
+  padding: 10px;
+  background-color: #fff;
+  color: #4CAF50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #campaignId {
+    font-size: 0.9em;
+  }
+}

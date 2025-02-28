@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faire un Don</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Faire un Don</h1>
+    </header>
+
+    <main>
+        <!-- Section Campagnes -->
+        <section id="campaigns">
+            <h2>Campagnes de dons</h2>
+            <ul id="campaignList">
+                <!-- Liste des campagnes insérées dynamiquement -->
+            </ul>
+        </section>
+
+        <!-- Section Formulaire de Donation -->
+        <section id="donationForm">
+            <h2>Faire un Don</h2>
+            <div id="message"></div>
+            <form id="donation-form">
+                <label for="campaignId">Choisir une campagne :</label>
+                <select id="campaignId" name="campaignId">
+                    <option value="">Sélectionner une campagne</option>
+                    <!-- Options dynamiques ajoutées par JS -->
+                </select>
+
+                <label for="amount">Montant du Don (€) :</label>
+                <input type="number" id="amount" name="amount" placeholder="Entrez le montant" min="1">
+
+                <label for="donorName">Nom du Donateur :</label>
+                <input type="text" id="donorName" name="donorName" placeholder="Votre nom">
+
+                <label for="donorEmail">Email du Donateur :</label>
+                <input type="email" id="donorEmail" name="donorEmail" placeholder="Votre email">
+
+                <button type="submit">Faire un Don</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Un Don Pour Ma Maison</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
