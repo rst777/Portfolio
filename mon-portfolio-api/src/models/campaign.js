@@ -15,7 +15,7 @@ const campaignSchema = new mongoose.Schema({
   targetAmount: {
     type: Number,
     required: true,
-    min: 0,
+    min: 300000,
   },
   startDate: Date,
   endDate: Date,
