@@ -313,3 +313,104 @@ Avantages d'utiliser un custom hook
 - Séparation des préoccupations : La logique de récupération des données est séparée de la logique de rendu des composants, ce qui rend le code plus propre et plus facile à maintenir.
 - Gestion des erreurs : Le hook gère les erreurs de manière centralisée, ce qui simplifie la gestion des erreurs dans les composants.
 - En résumé, le hook useCampaigns est une manière efficace de récupérer et de gérer les données des campagnes de dons dans votre application React.
+
+#### Mongoose-paginate-v2 est une bibliothèque de pagination pour Mongoose, un outil de modélisation d'objets pour MongoDB et Node.js.
+
+##### Voici ses principales caractéristiques :
+
+* C'est un plugin qui ajoute des fonctionnalités de pagination aux schémas Mongoose.
+* Il permet de paginer facilement les résultats des requêtes Mongoose en ajoutant une méthode paginate() aux modèles.
+* Il offre la possibilité de personnaliser les clés de retour directement dans la requête, évitant ainsi le besoin de code supplémentaire pour la transformation des données.
+* Il prend en charge à la fois la pagination basée sur les pages et la pagination basée sur les curseurs.
+* Il permet de spécifier des options comme le tri, la sélection de champs, la population de références, et l'utilisation de requêtes lean pour de meilleures performances.
+* Il retourne des informations utiles comme le nombre total de documents, le nombre total de pages, et des indicateurs pour les pages suivantes et précédentes.
+* Cette bibliothèque simplifie grandement la mise en place de la pagination dans les applications Node.js utilisant Mongoose et MongoDB.
+
+###### 1. Objectif de la pagination :
+Imaginez que vous avez 1000 projets dans votre base de données. Au lieu de les charger tous d'un coup (ce qui serait lent et inefficace), vous les affichez par petits groupes, disons 10 à la fois.
+
+###### 2. Comment ça marche :
+
+* Vous décidez combien d'éléments vous voulez par page (appelons ça limit).
+
+* Vous gardez une trace de quelle page vous êtes actuellement (appelons ça page).
+
+###### 3. Dans le code :
+```
+javascript
+const { page = 1, limit = 10 } = req.query;
+const startIndex = (page - 1) * limit;
+```
+Si vous êtes sur la page 1, vous commencez au début (index 0).
+Si vous êtes sur la page 2, vous commencez au 11ème élément (index 10).
+Et ainsi de suite...
+
+###### 4. Utilisation dans Mongoose :
+```
+javascript
+const projects = await Project.find().skip(startIndex).limit(limit);
+```
+* skip(startIndex) dit à Mongoose de sauter les premiers startIndex éléments.
+
+* limit(limit) dit à Mongoose de ne renvoyer que limit éléments après cela.
+
+###### 5. Exemple concret :
+
+Si vous avez 100 projets et que vous voulez 10 projets par page :
+* Page 1 : projets 1-10
+* Page 2 : projets 11-20
+* Page 3 : projets 21-30
+etc.
+
+C'est comme si vous feuilletiez un grand livre, mais en ne lisant que quelques pages à la fois, plutôt que de tout lire d'un coup.
+
+##### Chacun gère un aspect spécifique de votre logique métier :
+
+* projectController : Gère les opérations CRUD pour les projets.
+* donationController : S'occupe des dons individuels et de leur traitement.
+* donationCampaignController : Gère les campagnes de dons, y compris leur création, mise à jour, et les dons associés.
+* contactController : Bien que actuellement un squelette, il est destiné à gérer les opérations liées aux contacts.
+* Ces contrôleurs séparent la logique métier de vos routes, ce qui rend votre code plus modulaire, plus facile à maintenir et à tester. Ils sont essentiels pour structurer correctement votre application backend.
+
+##### Chaque fichier de route correspond généralement à un contrôleur et définit les points d'entrée HTTP pour les différentes opérations. Voici comment cela fonctionne typiquement :
+
+projectRoutes.js : Définit les routes pour les opérations sur les projets.
+
+donationRoutes.js : Gère les routes pour les dons individuels.
+
+donationCampaignRoutes.js : Définit les routes pour les opérations sur les campagnes de dons.
+
+contactRoutes.js : Établit les routes pour la gestion des contacts.
+
+
+##### La logique de la route protégée fait référence au code qui sera exécuté une fois que l'authentification par API_KEY a réussi. Cette logique dépend entièrement de ce que vous voulez que cette route fasse. Voici quelques exemples de ce que pourrait contenir la logique de la route protégée :
+
+1. Renvoyer des données sensibles :
+```
+javascript
+router.get('/protected-route', apiAuth, (req, res) => {
+  res.json({ secretData: "Informations confidentielles" });
+});
+```
+2. Effectuer une opération spécifique :
+```
+javascript
+router.get('/protected-route', apiAuth, (req, res) => {
+  // Exemple : récupérer des données d'utilisateur
+  const userData = fetchUserData();
+  res.json(userData);
+});
+```
+3. Interagir avec une base de données :
+```
+javascript
+router.get('/protected-route', apiAuth, async (req, res) => {
+  try {
+    const result = await db.query('SELECT * FROM sensitive_table');
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: "Erreur lors de la récupération des données" });
+  }
+});
+```
+##### La logique de la route protégée peut inclure n'importe quelle fonctionnalité que vous souhaitez restreindre aux utilisateurs authentifiés avec la bonne API_KEY.

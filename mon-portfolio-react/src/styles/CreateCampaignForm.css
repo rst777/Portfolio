@@ -1,0 +1,68 @@
+/* Pour le formulaire */
+.create-campaign-form {
+	max-width: 400px;
+	margin: 40px auto;
+	padding: 20px;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Pour les champs du formulaire */
+  .create-campaign-form input, .create-campaign-form textarea {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+  }
+
+  .create-campaign-form input[type="file"] {
+	padding: 5px;
+  }
+
+  /* Pour le bouton de soumission */
+  .create-campaign-form button[type="submit"] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+
+  .create-campaign-form button[type="submit"]:hover {
+	background-color: #45a049;
+  }
+
+  /* Pour le lien vers la page d'accueil */
+  .create-campaign-form a {
+	text-decoration: none;
+	color: #4CAF50;
+  }
+/* Pour le lien vers la page d'accueil au survol */
+  .create-campaign-form a:hover {
+	color: #45a049;
+  }
+/* Pour les messages d'erreur */
+  .error-message {
+	color: #ff0000;
+	background-color: #ffeeee;
+	border: 1px solid #ff0000;
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 15px;
+	font-size: 14px;
+	font-weight: bold;
+  }
+
+  .success-message {
+	color: #008000;
+	background-color: #e6ffe6;
+	border: 1px solid #008000;
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 15px;
+	font-size: 14px;
+  }

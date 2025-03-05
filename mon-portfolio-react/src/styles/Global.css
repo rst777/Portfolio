@@ -41,3 +41,7 @@ button {
 button:hover {
     background-color: #11db1b;
 }
+
+.main-content {
+    padding-bottom: 60px;
+}

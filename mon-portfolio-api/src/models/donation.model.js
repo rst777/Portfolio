@@ -1,3 +1,5 @@
+// src/models/donation.model.js
+
 const mongoose = require('mongoose');
 
 const donationSchema = new mongoose.Schema({

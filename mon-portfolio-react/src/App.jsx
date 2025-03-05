@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './hooks/useAuth';
 import { useAuth } from './hooks/useAuth';
 import Header from './components/Header';
@@ -12,6 +12,8 @@ import LoginForm from './components/LoginForm';
 import PrivateRoute from './components/PrivateRoute';
 import NotFound from './components/NotFound';
 import RegisterForm from './components/RegisterForm';
+import CreateCampaignForm from './components/CreateCampaignForm';
+
 
 import './styles/Responsive.css';
 import './styles/App.css';
@@ -48,21 +50,25 @@ function AppContent() {
     }, 1000); // Attendre 1 seconde avant de faire la requête
   }, [getToken]); // Ajoutez getToken comme dépendance
 
+
   return (
     <Router>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage campaigns={campaigns} />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/propos" element={<AboutPage />} />
-        <Route path="/register" element={<RegisterForm />} />
-        {/* Routes protégées */}
-        <Route element={<PrivateRoute />}>
-          <Route path="/dons" element={<DonationForm campaigns={campaigns} />} />
-          <Route path="/campaign/:id" element={<CampaignDetails />} />
-        </Route>
-        <Route path="*" element={<NotFound />} /> {/* Route pour gérer les 404 */}
-      </Routes>
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<HomePage campaigns={campaigns} />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/propos" element={<AboutPage />} />
+          <Route path="/register" element={<RegisterForm />} />
+          {/* Routes protégées */}
+          <Route element={<PrivateRoute />}>
+            <Route path="/dons" element={<DonationForm campaigns={campaigns} />} />
+            <Route path="/campaign/:id" element={<CampaignDetails />} />
+            <Route path="/create-campaign" element={<CreateCampaignForm />} />
+          </Route>
+          <Route path="*" element={<NotFound />} /> {/* Route pour gérer les 404 */}
+        </Routes>
+      </div>
       <Footer />
     </Router>
   );

@@ -1,3 +1,5 @@
+// middleware/auth.middleware.js
+
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 const TOKEN_EXPIRATION_TIME = process.env.TOKEN_EXPIRATION_TIME || '1h';

@@ -1,4 +1,4 @@
-// middleware/logger.js
+// middleware/logger.middleware.js
 
 function loggerMiddleware(req, res, next) {
   console.log('Time:', Date.now());

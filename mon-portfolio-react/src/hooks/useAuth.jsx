@@ -1,3 +1,5 @@
+/* src/hooks/useAuth.jsx */
+
 import { useState, useEffect, createContext, useContext } from 'react';
 
 const AuthContext = createContext();

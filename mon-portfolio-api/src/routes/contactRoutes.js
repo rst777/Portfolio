@@ -1,6 +1,9 @@
+/* route/contactRoutes.js */
+
 const express = require('express');
 const router = express.Router();
-const contactController = require('../controllers/contactController'); // Assure-toi que ce fichier existe !
+const contactController = require('../controllers/contactController');
+// const apiAuth = require('../middlewares/apiAuth');
 
 // Définition des routes
 router.get('/', contactController.list);

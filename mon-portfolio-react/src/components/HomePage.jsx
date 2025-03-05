@@ -68,6 +68,8 @@ const HomePage = () => {
 
       <section className="campaigns">
         <h2>Nos Campagnes</h2>
+
+        <Link to="/create-campaign" className="create-campaign-button">Créer une nouvelle campagne</Link>
         {error ? (
           <p>Erreur : {error}</p>
         ) : campaigns.length > 0 ? (
@@ -91,6 +93,7 @@ const HomePage = () => {
       </section>
 
       <section className="call-to-action">
+
         <h2>Envie d’aider ?</h2>
         <p>Rejoignez-nous en faisant un don ou en partageant notre cause !</p>
         <a href="/dons" className="donate-button">Faire un don</a>

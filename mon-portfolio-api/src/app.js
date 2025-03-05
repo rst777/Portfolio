@@ -7,17 +7,26 @@ const contactRoutes = require('./routes/contactRoutes');
 const donationCampaignRoutes = require('./routes/donationCampaignRoutes');
 const donationRoutes = require('./routes/donationRoutes');
 const campaignRoutes = require('./routes/campaignRoutes');
-const authMiddleware = require('./middlewares/auth');
-const loggerMiddleware = require('./middlewares/logger');
+const authMiddleware = require('./middlewares/auth.middleware');
+const loggerMiddleware = require('./middlewares/logger.middleware');
+const errorMiddleware = require('./middlewares/error.middleware');
+const path = require('path');
 
 const app = express();
 
-// Middlewares
+// Middlewares pour parser les json
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(loggerMiddleware);
+app.use('/api/auth', authRoutes);
+
+// Servir les fichiers statiques (frontend)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Servir les fichiers statiques (images uploadées)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes publiques
 app.use('/assets', express.static('frontend/assets'));
@@ -40,4 +49,5 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/frontend/index.html');
 });
 
+app.use(errorMiddleware);
 module.exports = app;

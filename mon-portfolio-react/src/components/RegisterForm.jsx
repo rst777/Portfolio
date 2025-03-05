@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/RegisterForm.css';
 
 const RegisterForm = () => {
   const [lastName, setLastName] = useState('');
@@ -31,7 +32,8 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleRegister}>
+    <div className="register-form-container">
+    <form className="register-form" onSubmit={handleRegister}>
       <input
         type="text"
         value={firstName}
@@ -62,6 +64,7 @@ const RegisterForm = () => {
       />
       <button type="submit">S'inscrire</button>
     </form>
+    </div>
   );
 };
 

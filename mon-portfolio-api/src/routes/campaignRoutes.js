@@ -1,17 +1,21 @@
 // routes/campaignRoutes.js
 const express = require('express');
 const router = express.Router();
-const Campaign = require('../models/campaign');
+const campaignController = require('../controllers/campaignController');
 
-// Exemple de route pour créer une nouvelle campagne
-router.post('/campaigns', async (req, res) => {
-  try {
-    const newCampaign = new Campaign(req.body);
-    const savedCampaign = await newCampaign.save();
-    res.status(201).json(savedCampaign);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
+// Route pour créer une nouvelle campagne
+router.post('/', campaignController.createCampaign);
+
+// Route pour récupérer toutes les campagnes
+router.get('/', campaignController.getAllCampaigns);
+
+// Route pour récupérer une campagne spécifique
+router.get('/:id', campaignController.getCampaignById);
+
+// Route pour mettre à jour une campagne
+router.put('/:id', campaignController.updateCampaign);
+
+// Route pour supprimer une campagne
+router.delete('/:id', campaignController.deleteCampaign);
 
 module.exports = router;

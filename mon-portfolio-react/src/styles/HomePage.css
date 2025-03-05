@@ -1,5 +1,10 @@
 /* HomePage.css */
 
+
+.main-content {
+	padding-bottom: 60px;
+  }
+
 main {
 	display: flex;
 	flex-direction: column;
@@ -88,4 +93,18 @@ main {
   .campaign-card .amount {
 	font-weight: bold;
 	color: var(--primary-color, #28a745);
+  }
+
+  .create-campaign-button {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	margin-bottom: 20px;
+  }
+
+  .create-campaign-button:hover {
+	background-color: #45a049;
   }

@@ -1,3 +1,5 @@
+// src/models/contact.model.js
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
