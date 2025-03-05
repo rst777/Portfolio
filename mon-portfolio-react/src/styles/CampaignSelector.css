@@ -22,10 +22,3 @@
   background-color: #fff;
   color: #4CAF50;
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  #campaignId {
-    font-size: 0.9em;
-  }
-}

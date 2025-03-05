@@ -1,57 +1,38 @@
 /* AboutPage.css */
 
-main {
+.about-page main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 20px;
-	font-family: 'Roboto', sans-serif;
   }
 
-  section {
+  .about-page section {
 	max-width: 800px;
 	width: 100%;
 	margin-bottom: 40px;
 	text-align: center;
   }
 
-  h2 {
-	color: #4CAF50;
+  .about-page h2 {
+	color: var(--primary-color);
 	margin-bottom: 20px;
-	font-size: 2em;
   }
 
-  p {
-	color: #333;
-	line-height: 1.6;
-	font-size: 1em;
-  }
-
-  .about,
-  .team,
-  .contact {
+  .about-page .about,
+  .about-page .team,
+  .about-page .contact {
 	background-color: #f9f9f9;
 	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  .team p,
-  .contact p {
+  .about-page .team p,
+  .about-page .contact p {
 	margin-bottom: 10px;
   }
 
-  .contact p:last-child {
+  .about-page .contact p:last-child {
 	margin-bottom: 0;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-	h2 {
-	  font-size: 1.5em;
-	}
-
-	p {
-	  font-size: 0.9em;
-	}
   }

@@ -22,14 +22,3 @@ body {
 	font-size: 1em;
   }
 
-  /* Responsive Design */
-  @media (max-width: 768px) {
-	footer {
-	  padding: 15px;
-	}
-
-	footer p {
-	  font-size: 0.9em;
-	}
-  }
-

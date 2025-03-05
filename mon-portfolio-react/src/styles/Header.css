@@ -4,16 +4,16 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #4CAF50;
-	color: hsl(0, 0%, 100%);
-	padding: 10px 20px; /* Ajustez le padding pour maintenir la hauteur */
-	height: 40px; /* Définissez une hauteur fixe pour le header */
+	background-color: var(--primary-color);
+	color: white;
+	padding: 10px 20px;
+	height: 40px;
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .logo {
-	width: 80px; /* Ajustez la taille selon vos besoins */
+	width: 80px;
 	height: auto;
 	margin-right: 20px;
   }
@@ -36,17 +36,3 @@ header {
 	color: #d4f1d4;
   }
 
-  /* Responsive Design */
-  @media (max-width: 768px) {
-	header {
-	  padding: 10px;
-	}
-
-	.logo {
-	  width: 60px; /* Ajustez la taille pour les écrans plus petits */
-	}
-
-	nav ul li a {
-	  font-size: 0.9em;
-	}
-  }

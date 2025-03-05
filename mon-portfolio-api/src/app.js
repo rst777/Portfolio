@@ -1,34 +1,43 @@
 const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const authRoutes = require('./routes/authRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const donationCampaignRoutes = require('./routes/donationCampaignRoutes');
 const donationRoutes = require('./routes/donationRoutes');
 const campaignRoutes = require('./routes/campaignRoutes');
+const authMiddleware = require('./middlewares/auth');
+const loggerMiddleware = require('./middlewares/logger');
 
 const app = express();
 
-const cors = require('cors');
+// Middlewares
 app.use(cors());
-
-const morgan = require('morgan');
 app.use(morgan('dev'));
-
-// Middleware pour parser les requêtes JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(loggerMiddleware);
 
-// Middleware pour servir des fichiers statiques (CSS, images, JS)
-app.use('/assets', express.static('frontend/assets')); // Sert les fichiers du dossier frontend/assets
+// Routes publiques
+app.use('/assets', express.static('frontend/assets'));
 
-// Définition des routes API
+// Routes d'authentification (non protégées)
+app.use('/api/auth', authRoutes);
+
+// Middleware d'authentification pour les autres routes API
+app.use('/api', authMiddleware);
+
+// Routes API protégées
 app.use('/api/projects', projectRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/donation-campaigns', donationCampaignRoutes);
 app.use('/api/donations', donationRoutes);
 app.use('/api/campaigns', campaignRoutes);
 
-// Autres routes
+// Route principale
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/frontend/index.html'); // Envoie le fichier index.html comme page d'accueil
+  res.sendFile(__dirname + '/frontend/index.html');
 });
 
 module.exports = app;

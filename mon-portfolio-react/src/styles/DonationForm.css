@@ -51,20 +51,3 @@
   #donation-form button:hover {
 	background-color: #45a049;
   }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-	#donation-form {
-	  padding: 15px;
-	}
-
-	#donation-form h2 {
-	  font-size: 1.5em;
-	}
-
-	#donation-form input,
-	#donation-form select,
-	#donation-form button {
-	  font-size: 0.9em;
-	}
-  }

@@ -29,10 +29,14 @@ const DonationForm = ({ campaigns = [] }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/donations', {
+      // Récupérer le token depuis le localStorage
+      const token = localStorage.getItem('authToken');
+
+      const response = await fetch('http://localhost:4000/api/donations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Ajouter le token ici
         },
         body: JSON.stringify(formData),
       });
@@ -53,7 +57,7 @@ const DonationForm = ({ campaigns = [] }) => {
       setMessage('Erreur de connexion avec le serveur. Veuillez réessayer plus tard.');
     }
   };
-
+  
   return (
     <form id="donation-form" onSubmit={handleSubmit}>
       <h2>Faire un Don</h2>

@@ -1,3 +1,4 @@
+FR
 # Portfolio
 
 #### Requirements
@@ -182,7 +183,7 @@ mon-portfolio-react/
 1. cors (Cross-Origin Resource Sharing) est un mécanisme qui permet aux navigateurs web d'autoriser ou de bloquer des requêtes faites par une origine différente du serveur.
 
 🔹 Pourquoi cors est-il utile ?
-Si ton frontend (React, Vue, etc.) tourne sur http://localhost:5173 et que ton backend est sur http://localhost:3000, alors le navigateur bloque par défaut les requêtes AJAX à cause des politiques de sécurité (Same-Origin Policy). cors permet de lever cette restriction et d'autoriser certaines requêtes.
+Si le frontend (React, Vue, etc.) tourne sur http://localhost:5173 et que le backend est sur http://localhost:3000, alors le navigateur bloque par défaut les requêtes AJAX à cause des politiques de sécurité (Same-Origin Policy). cors permet de lever cette restriction et d'autoriser certaines requêtes.
 
 2. morgan est un middleware pour Express qui sert à logger (enregistrer) les requêtes HTTP dans la console. Il est utile pour voir en temps réel les requêtes envoyées à ton serveur, ce qui aide au debugging.
 
@@ -209,14 +210,51 @@ Les middlewares ont plusieurs rôles importants:
 
 Le middleware est au cœur du fonctionnement d'Express.js. En effet, une application Express
 n'est essentiellement qu'une série d'appels de fonctions middleware. Ces fonctions peuvent
-effectuer diverses tâches telles **que le parsing du corps de la requête**, **la gestion des sessions**,
-ou **le service de fichiers statiques**.
+effectuer diverses tâches telles:
+- **que le parsing du corps de la requête**,
+- **la gestion des sessions**,
+- **le service de fichiers statiques**.
 
-Les middlewares peuvent être appliqués à **l'ensemble de l'application**, à **des routes spécifiques**,
+- Les middlewares peuvent être appliqués à **l'ensemble de l'application**, à **des routes spécifiques**,
 ou à **une combinaison de route et de méthode HTTP particulière**. Ils sont ajoutés à l'application via des **méthodes comme app.use() ou app.get()**.
 Un aspect crucial du middleware est l'utilisation de la **fonction next**().
-Si un **middleware ne termine pas le cycle requête-réponse, il doit appeler next()**
+- Si un **middleware ne termine pas le cycle requête-réponse, il doit appeler next()**
 pour **passer le contrôle au middleware suivant**, **sinon la requête restera en suspens**.
+
+- Les middlewares sont des fonctions intermédiaires qui traitent les requêtes HTTP avant qu'elles n'atteignent les gestionnaires de route finaux15.
+
+- Les middlewares dans Express.js peuvent effectuer diverses tâches importantes, telles que :
+
+1. Valider les données de la requête
+
+2. Accéder à une base de données
+
+3. Agir comme un pare-feu
+
+4. Journaliser des informations
+
+5. Compresser les réponses
+
+6. Gérer les erreurs
+
+7. Mettre en cache les réponses
+
+**Ces fonctions middleware ont accès aux objets de requête (req), de réponse (res), et à la fonction middleware suivante dans le cycle requête-réponse, généralement appelée next.**
+
+En plaçant les middlewares dans un dossier dédié, on améliore l'organisation du projet, rendant le code plus maintenable et plus facile à comprendre. Cela permet également de réutiliser facilement ces middlewares dans différentes parties de votre application.
+
+Pour utiliser un middleware, on peut le monter sur un chemin spécifique ou sur toutes les routes de votre application en utilisant app.use()5. Par exemple :
+
+```
+javascript
+app.use((req, res, next) => {
+  console.log('Time:', Date.now())
+  next()
+})
+```
+Ce middleware sera exécuté pour chaque requête reçue par votre application.
+
+En résumé, le dossier middleware dans la structure de projet Express.js est un emplacement centralisé pour stocker et organiser les fonctions middleware personnalisées, ce qui améliore la modularité et la maintenabilité de votre application.
 
 
 
@@ -271,7 +309,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 Avantages d'utiliser un custom hook
-Réutilisabilité : Vous pouvez réutiliser le hook useCampaigns dans plusieurs composants sans dupliquer la logique de récupération des données.
-Séparation des préoccupations : La logique de récupération des données est séparée de la logique de rendu des composants, ce qui rend le code plus propre et plus facile à maintenir.
-Gestion des erreurs : Le hook gère les erreurs de manière centralisée, ce qui simplifie la gestion des erreurs dans les composants.
-En résumé, le hook useCampaigns est une manière efficace de récupérer et de gérer les données des campagnes de dons dans votre application React.
+- Réutilisabilité : Vous pouvez réutiliser le hook useCampaigns dans plusieurs composants sans dupliquer la logique de récupération des données.
+- Séparation des préoccupations : La logique de récupération des données est séparée de la logique de rendu des composants, ce qui rend le code plus propre et plus facile à maintenir.
+- Gestion des erreurs : Le hook gère les erreurs de manière centralisée, ce qui simplifie la gestion des erreurs dans les composants.
+- En résumé, le hook useCampaigns est une manière efficace de récupérer et de gérer les données des campagnes de dons dans votre application React.

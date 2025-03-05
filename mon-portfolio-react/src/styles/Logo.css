@@ -1,0 +1,32 @@
+/* Logo.css */
+
+.logo {
+	height: 6em;
+	width: auto;
+	padding: 1.5em;
+	will-change: filter;
+	transition: filter 3000ms;
+  }
+
+  .logo:hover {
+	filter: drop-shadow(0 0 2em hsla(251, 90%, 37%, 0.877));
+  }
+
+  .logo.react:hover {
+	filter: drop-shadow(0 0 2em #61dafbaa);
+  }
+
+  @keyframes logo-spin {
+	from {
+	  transform: rotate(1deg);
+	}
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+	a:nth-of-type(2) .logo {
+	  animation: logo-spin infinite 20s linear;
+	}
+  }

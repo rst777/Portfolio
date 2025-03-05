@@ -35,14 +35,3 @@
 	transform: scale(1.02);
 	background-color: #e8f5e9;
   }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-	#campaigns h2 {
-	  font-size: 1.5em;
-	}
-
-	#campaignList li {
-	  font-size: 0.9em;
-	}
-  }

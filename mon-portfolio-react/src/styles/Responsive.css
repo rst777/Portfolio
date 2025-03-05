@@ -1,0 +1,77 @@
+/* Base styles */
+
+:root {
+	--primary-color: #4CAF50;
+	--secondary-color: #ff9800;
+	--text-color: #333;
+  }
+
+  body {
+	font-family: 'Roboto', sans-serif;
+	line-height: 1.6;
+	color: var(--text-color);
+  }
+
+  /* Flexible images */
+  img {
+	max-width: 100%;
+	height: auto;
+  }
+
+  /* Responsive typography */
+  html {
+	font-size: clamp(16px, 2vw, 20px);
+  }
+
+  /* Flexbox layout */
+  .container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+  }
+
+  /* Grid layout */
+  .grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 1rem;
+  }
+
+  /* Media queries */
+  @media screen and (max-width: 600px) {
+	.container {
+	  flex-direction: column;
+	}
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 900px) {
+	.container {
+	  justify-content: space-around;
+	}
+  }
+
+  @media screen and (min-width: 901px) {
+	.container {
+	  justify-content: space-between;
+	}
+  }
+
+  /* High-resolution screens */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	/* Styles for high-res displays */
+  }
+
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+	body {
+	  background-color: #333;
+	  color: #fff;
+	}
+  }
+
+  /* Print styles */
+  @media print {
+	body {
+	  font-size: 12pt;
+	}
+  }
