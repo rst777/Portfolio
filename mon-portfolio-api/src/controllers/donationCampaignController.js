@@ -27,7 +27,6 @@ exports.getAllCampaigns = async (req, res) => {
   }
 };
 
-// ... (le reste du code reste inchangé)
 
 // Créer une nouvelle campagne de dons
 exports.createCampaign = [
