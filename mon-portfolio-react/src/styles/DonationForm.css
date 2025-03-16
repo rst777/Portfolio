@@ -1,53 +1,107 @@
 /* DonationForm.css */
-
-#donation-form {
-	max-width: 600px;
-	margin: 150px auto;
+.donation-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	background-color: white;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  #donation-form {
+	max-width: 600px;
+	width: 100%;
+	padding: 30px;
+	border: none;
+	border-radius: 16px;
+	background-color: #fff;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
 
   #donation-form h2 {
-	color: #4CAF50;
+	color: #000000; /* Violet plus foncé, comme dans le header */
 	margin-bottom: 30px;
 	text-align: center;
+	font-size: 2.2em;
   }
 
   #message {
-	color: red;
-	font-weight: bold;
+	color: #C51077; /* Rose foncé du gradient */
+	font-weight: 600;
 	text-align: center;
 	margin-bottom: 20px;
   }
 
   #donation-form label {
 	display: block;
-	margin-bottom: 5px;
-	font-weight: bold;
+	margin-bottom: 10px;
+	font-weight: 500;
+	color: #4B0082; /* Indigo, comme dans le header */
   }
 
   #donation-form input,
-  #donation-form select,
-  #donation-form button {
+  #donation-form select {
 	width: 100%;
-	padding: 10px;
-	margin-bottom: 15px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+	padding: 14px;
+	margin-bottom: 20px;
+	border: 1px solid #E6E6FA; /* Violet clair */
+	border-radius: 10px;
 	font-size: 1em;
+	transition: border-color 0.3s ease;
+	color: #333;
+  }
+
+  #donation-form input:focus,
+  #donation-form select:focus {
+	outline: none;
+	border-color: #8A2BE2; /* Violet foncé au focus */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   #donation-form button {
-	background-color: #4CAF50;
+	background-image: linear-gradient(to right, #8A2BE2, #C51077); /* Gradient violet */
 	color: white;
 	cursor: pointer;
-	font-weight: bold;
-	transition: background-color 0.3s ease;
+	font-weight: 600;
+	font-size: 1.1em;
+	padding: 14px 28px;
+	border: none;
+	border-radius: 10px;
+	transition: all 0.3s ease; /* Correction ici */
+	width: 100%; /* Pour que le bouton prenne toute la largeur */
   }
 
   #donation-form button:hover {
-	background-color: #45a049;
+	opacity: 0.9;
+	transform: translateY(-2px);
   }
+
+  .selected-campaign-info {
+	margin-bottom: 30px; /* Augmenté de 20px à 30px */
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 10px;
+  }
+
+  #donation-form > * {
+	margin-bottom: 20px;
+  }
+
+  #donation-form > *:last-child {
+	margin-bottom: 0;
+  }
+	  .selected-campaign-info img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 8px;
+		margin-bottom: 10px;
+	  }
+
+	  .selected-campaign-info h3 {
+		color: #8A2BE2;
+		margin-bottom: 10px;
+	  }
+
+	  .selected-campaign-info p {
+		color: #333;
+		font-size: 0.9em;
+	  }

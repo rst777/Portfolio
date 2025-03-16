@@ -1,6 +1,7 @@
 // src/server.js
 
 require('dotenv').config();
+//* console.log('Clé secrète utilisée :', process.env.JWT_SECRET || 'ma_clé_secrète_par_défaut');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');

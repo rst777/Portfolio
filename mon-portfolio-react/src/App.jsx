@@ -1,5 +1,8 @@
+// src/App.jsx
+
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import { AuthProvider } from './hooks/useAuth';
 import { useAuth } from './hooks/useAuth';
 import Header from './components/Header';
@@ -14,23 +17,24 @@ import NotFound from './components/NotFound';
 import RegisterForm from './components/RegisterForm';
 import CreateCampaignForm from './components/CreateCampaignForm';
 
-
 import './styles/Responsive.css';
 import './styles/App.css';
 import './styles/Global.css';
-import './styles/Index.css';
+import './styles/HomePage.css';
 
 function AppContent() {
   const [campaigns, setCampaigns] = useState([]);
-  const { getToken } = useAuth(); // Utilisez useAuth ici
+  const { getToken } = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        const token = getToken(); // Obtenez le token
-        const response = await fetch('http://localhost:4000/api/donation-campaigns', {
+        setIsLoading(true);
+        const token = getToken();
+        const response = await fetch('http://localhost:4000/api/campaigns', {
           headers: {
-            'Authorization': `Bearer ${token}` // Ajoutez le token aux headers
+            'Authorization': `Bearer ${token}`
           }
         });
         if (response.ok) {
@@ -42,42 +46,48 @@ function AppContent() {
         }
       } catch (error) {
         console.error('Erreur lors de la récupération des campagnes', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     setTimeout(() => {
       fetchCampaigns();
-    }, 1000); // Attendre 1 seconde avant de faire la requête
-  }, [getToken]); // Ajoutez getToken comme dépendance
-
+    }, 1000);
+  }, [getToken]);
 
   return (
-    <Router>
+  <>
       <Header />
       <div className="main-content">
         <Routes>
-          <Route path="/" element={<HomePage campaigns={campaigns} />} />
+          <Route path="/" element={<HomePage campaigns={campaigns} isLoading={isLoading} />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/propos" element={<AboutPage />} />
           <Route path="/register" element={<RegisterForm />} />
+
           {/* Routes protégées */}
           <Route element={<PrivateRoute />}>
-            <Route path="/dons" element={<DonationForm campaigns={campaigns} />} />
+            <Route path="/dons" element={<DonationForm campaigns={campaigns} isLoading={isLoading} />} />
             <Route path="/campaign/:id" element={<CampaignDetails />} />
             <Route path="/create-campaign" element={<CreateCampaignForm />} />
+            <Route path="/campaigns" element={<HomePage campaigns={campaigns} isLoading={isLoading} />} />
           </Route>
-          <Route path="*" element={<NotFound />} /> {/* Route pour gérer les 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <Footer />
-    </Router>
+    </>
   );
 }
 
 function App() {
   return (
     <AuthProvider>
-      <AppContent />
+      <Router>
+        <ScrollToTop />
+        <AppContent />
+      </Router>
     </AuthProvider>
   );
 }

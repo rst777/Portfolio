@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import '../styles/Header.css';
+import '../styles/Responsive.css';
 import '../styles/Logo.css';
-
 
 const Header = () => {
   const { user, logout } = useAuth();
@@ -15,27 +15,32 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <img src="/assets/images/logo.png" alt="Logo du site" className="logo" />
-      <h1>Bienvenue</h1>
-      <nav>
-        <ul>
-          <li><Link to="/">Accueil</Link></li>
-          <li><Link to="/presentation">Présentation</Link></li>
-          <li><Link to="/propos">À propos</Link></li>
-          {user ? (
-            <>
-              <li><Link to="/dons">Faire un don</Link></li>
-              <li><button onClick={handleLogout}>Déconnexion</button></li>
-            </>
-          ) : (
-            <>
-              <li><Link to="/login">Connexion</Link></li>
-              <li><Link to="/register">S'inscrire</Link></li>
-            </>
-          )}
-        </ul>
-      </nav>
+    <header className="gofundme-header">
+      <div className="nav-left">
+        <Link to="/">Accueil</Link>
+        <Link to="/presentation">Présentation</Link>
+      </div>
+
+      <div className="logo-container">
+      <Link to="/">
+        <img src="/assets/images/logo.png" alt="Logo du site" className="logo" />
+        <span className="site-title">
+          <span className="animated-text">Un Don Pour Ma Maison</span>
+    </span>
+  </Link>
+</div>
+        <div className="nav-right">
+        <Link to="/propos">À propos</Link>
+        <Link to="/dons">Faire un don</Link>
+        {user ? (
+          <button onClick={handleLogout} className="logout-button">Déconnexion</button>
+        ) : (
+          <>
+            <Link to="/login" className="logout-button">Connexion</Link>
+            <Link to="/register" className="register-button">S'inscrire</Link>
+          </>
+        )}
+      </div>
     </header>
   );
 };

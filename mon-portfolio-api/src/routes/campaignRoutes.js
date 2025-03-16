@@ -1,21 +1,29 @@
 // routes/campaignRoutes.js
+
 const express = require('express');
 const router = express.Router();
-const campaignController = require('../controllers/campaignController');
+const donationCampaignController = require('../controllers/donationCampaignController');
+const upload = require('../middlewares/uploadMiddleware');
 
-// Route pour créer une nouvelle campagne
-router.post('/', campaignController.createCampaign);
+// Créer une nouvelle campagne (avec upload d'image)
+router.post('/', upload.single('image'), donationCampaignController.createCampaign);
 
-// Route pour récupérer toutes les campagnes
-router.get('/', campaignController.getAllCampaigns);
+// Obtenir toutes les campagnes
+router.get('/', donationCampaignController.getAllCampaigns);
 
-// Route pour récupérer une campagne spécifique
-router.get('/:id', campaignController.getCampaignById);
+// Obtenir une campagne spécifique par son ID
+router.get('/:id', donationCampaignController.getCampaignById);
 
-// Route pour mettre à jour une campagne
-router.put('/:id', campaignController.updateCampaign);
+// Mettre à jour une campagne
+router.put('/:id', donationCampaignController.updateCampaign);
 
-// Route pour supprimer une campagne
-router.delete('/:id', campaignController.deleteCampaign);
+// Supprimer une campagne
+router.delete('/:id', donationCampaignController.deleteCampaign);
+
+// Faire un don à une campagne spécifique
+router.post('/:id/donate', donationCampaignController.donateToCampaign);
+
+// Obtenir les campagnes actives (si implémenté dans le contrôleur)
+// router.get('/active', donationCampaignController.getActiveCampaigns);
 
 module.exports = router;

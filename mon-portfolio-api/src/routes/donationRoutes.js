@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const donationController = require('../controllers/donationController');
 const { body } = require('express-validator');
-const validate = require('../middlewares/validation.middleware');
+const validate = require('../middlewares/validationMiddleware');
 
 // Route pour récupérer toutes les donations
 router.get('/', donationController.getAllDonations);

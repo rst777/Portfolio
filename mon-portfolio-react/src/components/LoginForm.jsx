@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import loginImage from '/assets/images/login-image.jpg';
 import { useAuth } from '../hooks/useAuth';
 import '../styles/LoginForm.css';
+import '../styles/Responsive.css';
+import DynamicImage from './DynamicImage';
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -39,31 +43,31 @@ const LoginForm = () => {
   };
 
   return (
-	<div className="login-page">
-		<div className="login-form-container">
-		<form className="login-form" onSubmit={handleSubmit}>
-			<h2>Connexion</h2>
-			{status && <div className={status.includes('réussie') ? 'success' : 'error'}>{status}</div>}
-			<input
-			type="email"
-			value={email}
-			onChange={(e) => setEmail(e.target.value)}
-			placeholder="Email"
-			required
-			/>
-			<input
-			type="password"
-			value={password}
-			onChange={(e) => setPassword(e.target.value)}
-			placeholder="Mot de passe"
-			required
-			/>
-			<button type="submit">Se connecter</button>
-		</form>
-		</div>
-	</div>
+    <div className="login-page">
+      <DynamicImage src={loginImage} alt="Login" />
+      <div className="login-form-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h2>Connexion</h2>
+          {status && <div className={status.includes('réussie') ? 'success' : 'error'}>{status}</div>}
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Mot de passe"
+            required
+          />
+          <button type="submit">Se connecter</button>
+        </form>
+      </div>
+    </div>
   );
-
 };
 
 export default LoginForm;

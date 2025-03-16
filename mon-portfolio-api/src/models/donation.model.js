@@ -3,12 +3,12 @@
 const mongoose = require('mongoose');
 
 const donationSchema = new mongoose.Schema({
-  amount: { type: Number, required: true },
   campaign: { type: mongoose.Schema.Types.ObjectId, ref: 'DonationCampaign', required: true },
+  amount: { type: Number, required: true },
   donorName: { type: String, required: true },
-  donorEmail: { type: String, required: true }
+  donorEmail: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+
 });
 
-const Donation = mongoose.model('Donation', donationSchema);
-
-module.exports = Donation;
+module.exports = mongoose.model('Donation', donationSchema);

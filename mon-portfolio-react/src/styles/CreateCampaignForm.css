@@ -1,68 +1,135 @@
-/* Pour le formulaire */
-.create-campaign-form {
-	max-width: 400px;
-	margin: 40px auto;
-	padding: 20px;
-	background-color: #f9f9f9;
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
 
-  /* Pour les champs du formulaire */
-  .create-campaign-form input, .create-campaign-form textarea {
-	width: 100%;
-	padding: 10px;
+
+.create-campaign-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    max-width: 800px;
+    margin: 150px auto;
+    padding: 30px;
+    background-image: url('../assets/images/create-background.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+	width: 500%;
+
+}
+
+.create-campaign-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #dee9f5e6;
+    border-radius: 8px;
+    z-index: -1;
+
+}
+.modern-form {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+  .form-title {
+	text-align: center;
+	color: #333;
 	margin-bottom: 20px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
   }
 
-  .create-campaign-form input[type="file"] {
-	padding: 5px;
+  .modern-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
   }
 
-  /* Pour le bouton de soumission */
-  .create-campaign-form button[type="submit"] {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 5px;
+  .form-group {
+	display: flex;
+	flex-direction: column;
+  }
+
+  .modern-input,
+  .modern-textarea {
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 16px;
+  }
+
+  .modern-textarea {
+	min-height: 100px;
+	resize: vertical;
+  }
+
+  .date-inputs {
+	display: flex;
+	gap: 10px;
+  }
+
+  .modern-file-input {
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
 	cursor: pointer;
   }
 
-  .create-campaign-form button[type="submit"]:hover {
-	background-color: #45a049;
+  .form-actions {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
   }
 
-  /* Pour le lien vers la page d'accueil */
-  .create-campaign-form a {
-	text-decoration: none;
-	color: #4CAF50;
-  }
-/* Pour le lien vers la page d'accueil au survol */
-  .create-campaign-form a:hover {
-	color: #45a049;
-  }
-/* Pour les messages d'erreur */
-  .error-message {
-	color: #ff0000;
-	background-color: #ffeeee;
-	border: 1px solid #ff0000;
+  .modern-button {
+	padding: 10px 20px;
+	border: none;
 	border-radius: 4px;
-	padding: 10px;
-	margin-bottom: 15px;
-	font-size: 14px;
-	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s;
   }
 
-  .success-message {
-	color: #008000;
-	background-color: #e6ffe6;
-	border: 1px solid #008000;
-	border-radius: 4px;
+  .modern-button.primary {
+	background-color: #007bff;
+	color: white;
+  }
+
+  .modern-button.secondary {
+	background-color: #6c757d;
+	color: white;
+  }
+
+  .modern-button:hover {
+	opacity: 0.8;
+  }
+
+  .modern-button:disabled {
+	background-color: #cccccc;
+	cursor: not-allowed;
+  }
+
+  .message {
 	padding: 10px;
+	border-radius: 4px;
 	margin-bottom: 15px;
-	font-size: 14px;
+	text-align: center;
+  }
+
+  .message.success {
+	background-color: #d4edda;
+	color: #155724;
+  }
+
+  .message.error {
+	background-color: #f8d7da;
+	color: #721c24;
   }

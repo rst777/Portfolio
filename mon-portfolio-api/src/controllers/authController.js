@@ -72,7 +72,16 @@ exports.signup = async (req, res) => {
     const newContact = new Contact({ firstName, lastName, email, password });
     await newContact.save();
 
-    res.status(201).json({ message: "Inscription réussie" });
+    // Envoi d'une réponse de succès
+    res.status(201).json({
+      message: "Inscription réussie",
+      user: {
+        id: newContact._id,
+        firstName: newContact.firstName,
+        lastName: newContact.lastName,
+        email: newContact.email
+      }
+    });
   } catch (error) {
     console.error("Erreur lors de l'inscription:", error);
     res.status(500).json({

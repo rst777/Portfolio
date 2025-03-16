@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 const projectSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: [true, 'Le nom du projet est requis'],
     trim: true,
@@ -15,12 +15,18 @@ const projectSchema = new mongoose.Schema({
     trim: true,
     maxlength: [500, 'La description ne peut pas dépasser 500 caractères']
   },
-  year: {
+  targetAmount: {
     type: Number,
-    required: [true, 'L\'année est requise'],
-    min: [1900, 'L\'année doit être supérieure ou égale à 1900'],
-    max: [new Date().getFullYear(), `L'année ne peut pas dépasser ${new Date().getFullYear()}`]
+    required: [true, 'Le montant cible est requis'],
+    min: [1, 'Le montant cible doit être supérieur à 0'],
+    max: [1000000, 'Le montant cible ne peut pas dépasser 1 000 000']
   },
+
+  image: {
+    type: String, // Stocke l'URL ou le chemin de l'image
+    required: false
+  },
+
   createdAt: {
     type: Date,
     default: Date.now // Ajoute automatiquement la date de création

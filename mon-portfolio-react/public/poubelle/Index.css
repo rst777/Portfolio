@@ -1,0 +1,66 @@
+/* Header.css */
+/*
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0; /* Retirer le padding */
+  box-shadow: none; /* Retirer l'ombre */
+  box-sizing: border-box;
+  position: relative; /* Assurer que la barre verte est positionnée correctement */
+}
+/*
+.logo-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px; /* Ajouter du padding autour du logo */
+  z-index: 1; /* Assurer que le logo est au-dessus de la barre verte */
+}
+/*
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+.top-bar {
+  background-color: #4CAF50; /* Couleur verte */
+  height: 70px; /* Hauteur de la barre verte */
+  width: 100%;
+  position:absolute; /* Positionner la barre verte au centre */
+  top: 0;
+  left: 0;
+  z-index: 0; /* Placer derrière les autres éléments */
+}
+/*
+nav {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 20px; /* Ajouter une marge à droite */
+}
+/*
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li a, nav ul li button {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+nav ul li a:hover, nav ul li button:hover {
+  color: #4CAF50;
+  background-color: #f0f0f0;
+}
+

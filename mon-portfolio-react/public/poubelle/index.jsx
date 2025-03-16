@@ -1,4 +1,5 @@
-// src/components/Main.jsx
+// src/components/index.jsx
+/*
 import React, { useState, useEffect } from 'react';
 
 const API_URL = 'http://localhost:4000/api';
@@ -86,3 +87,4 @@ const Main = ({ campaigns, onCampaignSelect, selectedCampaign }) => {
 };
 
 export default Main;
+*/

@@ -3,76 +3,79 @@
 const Donation = require('../models/donation.model');
 const DonationCampaign = require('../models/donationCampaign.model');
 
-// Récupérer toutes les donations
+// Récupère toutes les donations
 exports.getAllDonations = async (req, res) => {
   try {
-    const donations = await Donation.find();
+    const donations = await Donation.find().populate('campaign', 'title');
     res.status(200).json(donations);
   } catch (err) {
-    res.status(500).send('Erreur lors de la récupération des donations');
+    res.status(500).json({
+      success: false,
+      message: 'Erreur lors de la récupération des donations',
+      error: err.message
+    });
   }
 };
+// Cette fonction récupère toutes les donations enregistrées.
 
-// Faire une donation
+// Fait une nouvelle donation
 exports.makeDonation = async (req, res) => {
   const { campaignId, amount, donorName, donorEmail } = req.body;
+  console.log('Tentative de don:', { campaignId, amount, donorName, donorEmail });
 
-  // Validation du montant
-  if (amount <= 0) {
+  // Convertir le montant en nombre et vérifier sa validité
+  const donationAmount = parseFloat(amount);
+  if (isNaN(donationAmount) || donationAmount <= 0) {
     return res.status(400).json({
       success: false,
       message: 'Le montant du don doit être un nombre positif et supérieur à zéro.',
     });
   }
 
-// Validation de l'ID de la campagne
-  const campaign = await DonationCampaign.findById(campaignId);
-  if (!campaign) {
-    return res.status(404).json({
-      success: false,
-      message: 'Campagne non trouvée. Assurez-vous que l\'ID de la campagne est correct.',
-    });
-  }
-// Créer une nouvelle donation
-  const donation = new Donation({ amount, campaign: campaignId, donorName, donorEmail });
-
   try {
-    // Mise à jour atomique du montant de la campagne
-    const updatedCampaign = await DonationCampaign.findByIdAndUpdate(
-      campaignId,
-      { $inc: { raisedAmount: amount } }, // $inc permet d'ajouter un montant sans écraser les valeurs
-      { new: true }
-    );
-
-    if (!updatedCampaign) {
-      return res.status(400).json({
+    const campaign = await DonationCampaign.findById(campaignId);
+    console.log('Campagne trouvée:', campaign);
+    if (!campaign) {
+      return res.status(404).json({
         success: false,
-        message: 'Erreur lors de la mise à jour de la campagne. Essayez à nouveau.',
+        message: 'Campagne non trouvée. Assurez-vous que l\'ID de la campagne est correct.',
       });
     }
 
-    // Sauvegarder la donation
+    const donation = new Donation({ amount: donationAmount, campaign: campaignId, donorName, donorEmail });
     await donation.save();
 
-    // Réponse positive après tout a fonctionné
+    // Additionner correctement les montants
+    campaign.raisedAmount = parseFloat(campaign.raisedAmount) + donationAmount;
+    console.log('Nouveau montant collecté:', campaign.raisedAmount);
+    await campaign.save();
+    console.log('Campagne mise à jour avec succès');
+
+    // Vérifier que la mise à jour a bien été effectuée
+    const updatedCampaign = await DonationCampaign.findById(campaignId);
+    console.log('Montant final vérifié:', updatedCampaign.raisedAmount);
+
     res.status(201).json({
       success: true,
       message: 'Don effectué avec succès.',
       donation: donation,
+      updatedRaisedAmount: updatedCampaign.raisedAmount
     });
   } catch (err) {
-    console.error('Erreur interne du serveur:', err);
+    console.error('Erreur lors de l\'ajout du don:', err);
     res.status(500).json({
       success: false,
       message: 'Erreur interne du serveur, veuillez réessayer plus tard.',
+      error: err.message
     });
   }
 };
+// Cette fonction permet d'ajouter un nouveau don à une campagne spécifique.
 
-// Récupérer une donation spécifique par son ID
+// Récupère une donation spécifique par son ID
 exports.getDonationById = async (req, res) => {
   try {
-    const donation = await Donation.findById(req.params.id);
+    const donation = await Donation.findById(req.params.id).populate('campaign', 'title');
     if (!donation) {
       return res.status(404).json({
         success: false,
@@ -88,8 +91,9 @@ exports.getDonationById = async (req, res) => {
     });
   }
 };
+// Cette fonction récupère une donation spécifique en fonction de son ID.
 
-// Mettre à jour une donation (si nécessaire)
+// Met à jour une donation existante
 exports.updateDonation = async (req, res) => {
   try {
     const donation = await Donation.findByIdAndUpdate(req.params.id, req.body, {
@@ -115,3 +119,4 @@ exports.updateDonation = async (req, res) => {
     });
   }
 };
+// Cette fonction met à jour une donation existante.

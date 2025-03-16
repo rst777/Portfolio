@@ -1,38 +1,79 @@
 /* Header.css */
-
-header {
+.gofundme-header {
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: var(--primary-color);
-	color: white;
-	padding: 10px 20px;
-	height: 40px;
-	border-radius: 8px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	height: 60px;
   }
 
-  .logo {
-	width: 80px;
-	height: auto;
-	margin-right: 20px;
-  }
-
-  nav ul {
-	list-style-type: none;
-	padding: 0;
+  .nav-left, .nav-right {
 	display: flex;
+	align-items: center;
 	gap: 20px;
   }
 
-  nav ul li a {
-	color: white;
+  .gofundme-header a {
 	text-decoration: none;
-	font-weight: bold;
-	transition: color 0.3s ease;
+	color: hsl(0, 0%, 0%);
+	font-weight: 500;
   }
 
-  nav ul li a:hover {
-	color: #d4f1d4;
+  .gofundme-header a:hover {
+	color: #4CAF50;
   }
+
+  .logout-button, .register-button {
+	background-color: white;
+	color: #000000;
+	border: none;
+	padding: 2px 5px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: 500;
+  }
+
+  .register-button {
+	background-color: white;
+	color: white;
+	border: none;
+	padding: 2px 5px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: 500;
+  }
+
+  .logo-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	left: 0;
+  }
+
+  @keyframes moveText {
+	0% { transform: translateX(0); }
+	50% { transform: translateX(10px); }
+	100% { transform: translateX(0); }
+  }
+
+  .animated-text {
+	display: inline-block;
+	animation: moveText 3s ease-in-out infinite;
+  }
+
+  .site-title {
+	text-align: center;
+	position: relative;
+	top: -20px; /* Ajustez cette valeur pour monter le titre */
+  }
+
+
+
 

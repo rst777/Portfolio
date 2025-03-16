@@ -1,6 +1,10 @@
 .not-found-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh; /* Prend toute la hauteur de la fenêtre */
 	text-align: center;
-	margin-top: 50px;
   }
 
   .not-found-container h1 {
@@ -15,14 +19,14 @@
 
   .back-home-button {
 	display: inline-block;
-	margin-top: 20px;
+	margin-top: 20px; /* Ajustez si nécessaire */
 	padding: 10px 20px;
-	background-color: #4CAF50;
+	background-color: #00698f;
 	color: white;
 	text-decoration: none;
 	border-radius: 5px;
   }
 
   .back-home-button:hover {
-	background-color: #45a049;
+	background-color: #4caf50;
   }
