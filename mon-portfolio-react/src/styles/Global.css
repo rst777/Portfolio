@@ -1,9 +1,27 @@
+/* Variables CSS */
 :root {
     --primary-color: #00698f;
     --secondary-color: #ff9800;
     --background-color: #f9f9f9;
     --text-color: #333;
     --font-family: 'Roboto', sans-serif;
+    --border-radius: 6px;
+    --transition-speed: 0.3s;
+}
+
+/* Styles de base */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
 }
 
 #root {
@@ -13,21 +31,22 @@
     padding: 0;
 }
 
-body {
-    font-family: var(--font-family);
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.5;
-    padding: 0px;
+.main-content {
+    padding-bottom: 60px;
 }
 
-/* Styles de base pour les formulaires, boutons, etc. */
+/* Formulaires et boutons */
 input, select, button {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 19px;
-    transition: border-color 0.3s ease;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: all var(--transition-speed) ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary-color);
+    outline: none;
 }
 
 button {
@@ -35,13 +54,40 @@ button {
     color: white;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.9s ease-in-out;
+    border: none;
+    transition: background-color var(--transition-speed) ease;
 }
 
 button:hover {
-    background-color: #00698f;
+    background-color: #005270;
 }
 
-.main-content {
-    padding-bottom: 60px;
+/* Préservation des styles d'image */
+img {
+    max-width: 100%;
+    height: auto;
 }
+
+/* Styles pour les liens */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Utilitaires */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+    .container {
+        padding: 0 10px;
+    }
+

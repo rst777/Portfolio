@@ -1,22 +1,33 @@
 
 
-.create-campaign-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 60vh;
-    max-width: 800px;
-    margin: 150px auto;
-    padding: 30px;
-    background-image: url('../assets/images/create-background.jpg');
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    position: relative;
-	width: 500%;
+.create-campaign-page {
+  padding-top: 60px; /* Ajustez selon la hauteur de votre header */
+}
 
+.hero {
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.create-campaign-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .create-campaign-container::before {
@@ -99,7 +110,7 @@
   }
 
   .modern-button.primary {
-	background-color: #007bff;
+	background-color: #00698f;
 	color: white;
   }
 

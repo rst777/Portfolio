@@ -1,79 +1,102 @@
 /* Header.css */
+
 .gofundme-header {
 	background-color: #fff;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 	padding: 10px 20px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-between; /* Sépare les éléments à gauche et à droite */
 	align-items: center;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 1000;
-	height: 60px;
+	height: 10px; /* Ajuste automatiquement la hauteur */
+	min-height: 100px; /* Hauteur minimale */
   }
 
-  .nav-left, .nav-right {
+  /* Styles pour nav-left */
+  .nav-left {
 	display: flex;
 	align-items: center;
-	gap: 20px;
+	gap: 20px; /* Espace entre les liens */
   }
 
+  /* Styles pour nav-right */
+  .nav-right {
+	display: flex;
+	align-items: center;
+	gap: 20px; /* Espace entre les boutons ou liens */
+  }
+
+  .nav.right ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+  }
+
+  /* Liens généraux dans le header */
   .gofundme-header a {
 	text-decoration: none;
-	color: hsl(0, 0%, 0%);
+	color: #000;
 	font-weight: 500;
   }
 
   .gofundme-header a:hover {
-	color: #4CAF50;
+	color: #4CAF50; /* Couleur au survol */
   }
 
-  .logout-button, .register-button {
-	background-color: white;
-	color: #000000;
-	border: none;
-	padding: 2px 5px;
-	border-radius: 4px;
-	cursor: pointer;
-	font-weight: 500;
-  }
-
-  .register-button {
-	background-color: white;
-	color: white;
-	border: none;
-	padding: 2px 5px;
-	border-radius: 4px;
-	cursor: pointer;
-	font-weight: 500;
-  }
-
+  /* Logo et conteneur du titre */
   .logo-container {
 	display: flex;
 	align-items: center;
-	margin-bottom: 10px;
-	left: 0;
+	justify-content: center; /* Centre le logo horizontalement */
+	flex-grow: 1; /* Permet au logo de prendre l'espace disponible */
   }
 
-  @keyframes moveText {
-	0% { transform: translateX(0); }
-	50% { transform: translateX(10px); }
-	100% { transform: translateX(0); }
+  .logo {
+	margin: -40px 0; /* Ajuste l'espace autour du logo */
+	max-height: 80px; /* Limite la hauteur du logo */
   }
 
+  .site-title {
+	font-size: 1em; /* Taille du texte du titre */
+	font-weight: bold;
+	white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  }
+
+  /* Animation du texte (si nécessaire) */
   .animated-text {
 	display: inline-block;
 	animation: moveText 3s ease-in-out infinite;
   }
 
-  .site-title {
-	text-align: center;
-	position: relative;
-	top: -20px; /* Ajustez cette valeur pour monter le titre */
+  @keyframes moveText {
+	  0% { transform: translateX(0); }
+	  50% { transform: translateX(10px); }
+	  100% { transform: translateX(0); }
   }
 
+  /* Liens ou boutons dans nav-right */
+  .nav-right a, .nav-right button {
+	  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+	  padding: 5px 10px; /* Ajoute de l'espace interne aux liens/boutons */
+	  font-size: 0.9em;
 
+  }
 
+  /* Boutons spécifiques (déconnexion, inscription) */
+  .logout-button, .register-button {
 
+	  color: hsl(0, 0%, 99%);
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  font-weight: bold; /* Texte en gras pour plus de visibilité */
+	  padding: 10px; /* Ajoute un peu d'espace interne aux boutons */
+  }
+
+  .menu-toggle {
+	  display: none; /* Caché par défaut (sera visible en responsive) */
+  }

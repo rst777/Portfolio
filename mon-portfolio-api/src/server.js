@@ -1,12 +1,13 @@
 // src/server.js
 
-require('dotenv').config();
-//* console.log('Clé secrète utilisée :', process.env.JWT_SECRET || 'ma_clé_secrète_par_défaut');
+require('dotenv').config(); /*Load environment variables from a .env file into process.env*/
+
 const express = require('express');
-const path = require('path');
-const mongoose = require('mongoose');
 const cors = require('cors');
-const compression = require('compression');
+const compression = require('compression'); /*Node.js compression middleware*/
+const path = require('path');
+const mongoose = require('mongoose'); /*Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.*/
+
 
 const app = require('./app');
 

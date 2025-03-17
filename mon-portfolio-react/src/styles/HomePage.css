@@ -36,9 +36,9 @@
 
 .mission, .actions, .campaigns, .call-to-action {
   max-width: 1200px;
-  width: 90%;
-  margin: 40px auto;
-  padding: 30px;
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -73,17 +73,17 @@
 }
 
 .create-campaign-button {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   background-color: #00698f;
   color: rgb(255, 255, 255);
-  padding: 10px 10px;
+  padding: 8px 15px;
   border-radius: 5px;
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .create-campaign-button:hover {
-  background-color: #4CAF50;
+  background-color: #00698f;
 }
 
 .campaign-list {
@@ -113,7 +113,7 @@
 }
 
 .campaign-card img {
-  width: 50%;
+  width: 40%;
   height: 150px;
   object-fit: fill;
 }
@@ -140,8 +140,9 @@
 
 .call-to-action {
   text-align: center;
-  background-color: #1d4a5a;color: white;
-  padding: 12px 24px;
+  background-color: #fafbfc;
+  color: hsl(0, 0%, 0%);
+  padding: 10px 29px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 1.1em;
@@ -150,9 +151,9 @@
 }
 
 .donate-button {
-  display: inline-block;
-  background-color: #00698f;
-  color: white;
+  display:inline-flex;
+  background-color: hwb(196 1% 54%);
+  color: hwb(0 100% 0%);
   padding: 12px 24px;
   border-radius: 5px;
   text-decoration: none;
@@ -162,7 +163,8 @@
 }
 
 .donate-button:hover {
-  background-color: #4CAF50;
+  background-color: #c42525;
+  color: white;
 }
 
 .loading-spinner {

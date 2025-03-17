@@ -1,12 +1,10 @@
-// src/components/CreateCampaignForm.jsx
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { useCampaigns } from '../hooks/useCampaigns';
 import '../styles/CreateCampaignForm.css';
 import '../styles/Responsive.css';
 import backgroundImage from '/assets/images/create-background.jpg';
-
 
 const CreateCampaignForm = () => {
   const [formData, setFormData] = useState({
@@ -19,9 +17,22 @@ const CreateCampaignForm = () => {
   });
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [scrollOpacity, setScrollOpacity] = useState(1);
 
   const { getToken } = useAuth();
   const navigate = useNavigate();
+  const { addCampaign, error } = useCampaigns();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const opacity = Math.max(1 - scrollY / 300, 0);
+      setScrollOpacity(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -36,8 +47,6 @@ const CreateCampaignForm = () => {
     setMessage('');
     setIsLoading(true);
 
-    // Validation...
-
     try {
       const token = getToken();
       if (!token) throw new Error("Vous n'êtes pas authentifié. Veuillez vous connecter.");
@@ -47,14 +56,7 @@ const CreateCampaignForm = () => {
         formDataToSend.append(key, formData[key]);
       });
 
-      const response = await fetch('http://localhost:4000/api/campaigns', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${token}` },
-        body: formDataToSend,
-      });
-
-      if (!response.ok) throw new Error("Une erreur s'est produite lors de la création de la campagne.");
-
+      await addCampaign(formDataToSend);
       setMessage("Campagne créée avec succès !");
       navigate('/campaigns');
     } catch (error) {
@@ -65,78 +67,89 @@ const CreateCampaignForm = () => {
   };
 
   return (
-    <div className="create-campaign-container" style={{backgroundImage: `url(${backgroundImage})`}}>
-      <h2 className="form-title">Créer une nouvelle campagne</h2>
-      {message && <p className={`message ${message.includes("succès") ? "success" : "error"}`}>{message}</p>}
-      <form onSubmit={handleSubmit} className="modern-form">
-        <div className="form-group">
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            placeholder="Titre de la campagne"
-            required
-            className="modern-input"
-          />
-        </div>
-        <div className="form-group">
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            placeholder="Description de la campagne"
-            required
-            className="modern-textarea"
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="number"
-            name="targetAmount"
-            value={formData.targetAmount}
-            onChange={handleChange}
-            placeholder="Objectif (€)"
-            required
-            className="modern-input"
-          />
-        </div>
-        <div className="form-group date-inputs">
-          <input
-            type="date"
-            name="startDate"
-            value={formData.startDate}
-            onChange={handleChange}
-            required
-            className="modern-input"
-          />
-          <input
-            type="date"
-            name="endDate"
-            value={formData.endDate}
-            onChange={handleChange}
-            required
-            className="modern-input"
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="file"
-            name="image"
-            onChange={handleChange}
-            accept=".jpg,.jpeg,.png"
-            className="modern-file-input"
-          />
-        </div>
-        <div className="form-actions">
-          <button type="submit" disabled={isLoading} className="modern-button primary">
-            {isLoading ? "Création en cours..." : "Créer la campagne"}
-          </button>
-          <button type="button" onClick={() => navigate('/campaigns')} className="modern-button secondary">
-            Annuler
-          </button>
-        </div>
-      </form>
+    <div className="create-campaign-page">
+      <div
+        className="hero"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          opacity: scrollOpacity
+        }}
+      >
+        <h1>Créer une nouvelle campagne</h1>
+      </div>
+      <div className="create-campaign-container">
+        {message && <p className={`message ${message.includes("succès") ? "success" : "error"}`}>{message}</p>}
+        {error && <p className="error">{error}</p>}
+        <form onSubmit={handleSubmit} className="modern-form">
+          <div className="form-group">
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder="Titre de la campagne"
+              required
+              className="modern-input"
+            />
+          </div>
+          <div className="form-group">
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Description de la campagne"
+              required
+              className="modern-textarea"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="number"
+              name="targetAmount"
+              value={formData.targetAmount}
+              onChange={handleChange}
+              placeholder="Objectif (€)"
+              required
+              className="modern-input"
+            />
+          </div>
+          <div className="form-group date-inputs">
+            <input
+              type="date"
+              name="startDate"
+              value={formData.startDate}
+              onChange={handleChange}
+              required
+              className="modern-input"
+            />
+            <input
+              type="date"
+              name="endDate"
+              value={formData.endDate}
+              onChange={handleChange}
+              required
+              className="modern-input"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="file"
+              name="image"
+              onChange={handleChange}
+              accept=".jpg,.jpeg,.png"
+              className="modern-file-input"
+            />
+          </div>
+          <div className="form-actions">
+            <button type="submit" disabled={isLoading} className="modern-button primary">
+              {isLoading ? "Création en cours..." : "Créer la campagne"}
+            </button>
+            <button type="button" onClick={() => navigate('/campaigns')} className="modern-button secondary">
+              Annuler
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

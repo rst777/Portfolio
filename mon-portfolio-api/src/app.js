@@ -1,26 +1,25 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const authMiddleware = require('./middlewares/authMiddleware');
-const loggerMiddleware = require('./middlewares/loggerMiddleware');
-const authRoutes = require('./routes/authRoutes');
-const projectRoutes = require('./routes/projectRoutes');
-const contactRoutes = require('./routes/contactRoutes');
-const donationRoutes = require('./routes/donationRoutes');
-const campaignRoutes = require('./routes/campaignRoutes');
-const errorMiddleware = require('./middlewares/errorMiddleware');
-const path = require('path');
+const express = require('express'); /*nodeJs application module*/
+const cors = require('cors'); /*Cross-Origin Resource Sharing*/
+const morgan = require('morgan'); /*HTTP request logger middleware for node.js*/
+const authMiddleware = require('./middlewares/authMiddleware'); /*Middleware d'authentification*/
+const loggerMiddleware = require('./middlewares/loggerMiddleware'); /*Middleware de journalisation*/
+const errorMiddleware = require('./middlewares/errorMiddleware'); /*Middleware de gestion des erreurs*/
+const authRoutes = require('./routes/authRoutes'); /*Routes d'authentification*/
+const projectRoutes = require('./routes/projectRoutes'); /*Routes des projets*/
+const contactRoutes = require('./routes/contactRoutes'); /*Routes des contacts*/
+const donationRoutes = require('./routes/donationRoutes'); /*Routes des dons*/
+const campaignRoutes = require('./routes/campaignRoutes'); /*Routes des campagnes*/
+const path = require('path'); /*The path module provides utilities for working with file and directory paths*/
 
-
-const app = express();
+const app = express(); /*Create an instance of an Express application*/
 
 // Middlewares
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); 
 app.use(loggerMiddleware);
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('uploads')); /*Serve static files*/
 
 // Fichiers statiques
 app.use(express.static(path.join(__dirname, 'public')));

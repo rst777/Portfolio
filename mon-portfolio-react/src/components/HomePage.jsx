@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useCampaigns } from '../hooks/useCampaigns';
-import '../styles/HomePage.css';
 import { Link } from 'react-router-dom';
+import '../styles/HomePage.css';
 import '../styles/Responsive.css';
 
 const HomePage = () => {
