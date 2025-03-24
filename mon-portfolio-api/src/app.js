@@ -10,14 +10,18 @@ const contactRoutes = require('./routes/contactRoutes'); /*Routes des contacts*/
 const donationRoutes = require('./routes/donationRoutes'); /*Routes des dons*/
 const campaignRoutes = require('./routes/campaignRoutes'); /*Routes des campagnes*/
 const path = require('path'); /*The path module provides utilities for working with file and directory paths*/
+const helmet = require('helmet'); /*Helmet helps you secure your Express apps by setting various HTTP headers*/
 
 const app = express(); /*Create an instance of an Express application*/
 
 // Middlewares
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" },
+}));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
 app.use(loggerMiddleware);
 app.use('/uploads', express.static('uploads')); /*Serve static files*/
 

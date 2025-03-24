@@ -414,3 +414,45 @@ router.get('/protected-route', apiAuth, async (req, res) => {
 });
 ```
 ##### La logique de la route protégée peut inclure n'importe quelle fonctionnalité que vous souhaitez restreindre aux utilisateurs authentifiés avec la bonne API_KEY.
+
+
+### Snippet
+```
+/**
+ * 🔹 Connexion (Login)
+ * @route POST /auth/login
+ */
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Validation des entrées
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email et mot de passe sont requis" });
+    }
+
+    const contact = await Contact.findOne({ email });
+
+    // Vérifiez si l'utilisateur existe et si le mot de passe est correct
+    if (!contact || !(await contact.comparePassword(password))) {
+      return res.status(401).json({ message: "Identifiants invalides" });
+    }
+
+    // Génération du token JWT
+    const token = jwt.sign(
+      { userId: contact._id, email: contact.email },
+      JWT_SECRET,
+      { expiresIn: TOKEN_EXPIRATION_TIME }
+    );
+
+    res.json({
+      message: "Connexion réussie",
+      token,
+      expiresIn: TOKEN_EXPIRATION_TIME,
+    });
+  } catch (error) {
+    console.error("Erreur lors de la connexion:", error);
+    res.status(500).json({ message: "Erreur lors de la connexion" });
+  }
+};
+```
