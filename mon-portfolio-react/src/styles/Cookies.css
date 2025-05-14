@@ -1,0 +1,31 @@
+/* src/styles/Cookies.css */
+.cookies-policy {
+	max-width: 800px;
+	margin: 200px auto;
+	padding: 30px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .cookies-policy h1 {
+	color: #333;
+	margin-bottom: 20px;
+  }
+  .cookies-policy p, .cookies-policy h2, .cookies-policy ul {
+	color: #555;
+	line-height: 1.7;
+	margin-bottom: 16px;
+  }
+  .back-home-button {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 10px 18px;
+	background: #1976d2;
+	color: #fff;
+	border-radius: 6px;
+	text-decoration: none;
+	transition: background 0.2s;
+  }
+  .back-home-button:hover {
+	background: #125ea8;
+  }

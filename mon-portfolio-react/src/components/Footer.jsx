@@ -1,6 +1,9 @@
+//src/components/Footer.jsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
+import '../styles/Responsive.css';
 
 const Footer = () => {
   return (
@@ -26,7 +29,7 @@ const Footer = () => {
           <h4>Légal</h4>
           <ul>
             <li><Link to="/terms">Conditions d'utilisation</Link></li>
-            <li><Link to="/privacy">Politique de confidentialité</Link></li>
+            <li><Link to="/privacy-policy">Politique de confidentialité</Link></li>
             <li><Link to="/cookies">Politique de cookies</Link></li>
           </ul>
         </div>

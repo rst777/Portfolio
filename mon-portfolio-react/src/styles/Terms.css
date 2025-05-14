@@ -1,0 +1,58 @@
+/* src/styles/Terms.css */
+
+.terms-policy {
+	max-width: 900px;
+	margin: 200px auto;
+	padding: 32px 24px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+	font-family: 'Segoe UI', Arial, sans-serif;
+  }
+
+  .terms-policy h1 {
+	color: #1976d2;
+	font-size: 2.2rem;
+	margin-bottom: 28px;
+	text-align: center;
+  }
+
+  .terms-policy h2 {
+	color: #125ea8;
+	font-size: 1.3rem;
+	margin-top: 32px;
+	margin-bottom: 12px;
+	border-left: 4px solid #1976d2;
+	padding-left: 10px;
+	background: #f5faff;
+  }
+
+  .terms-policy p {
+	color: #444;
+	font-size: 1.05rem;
+	line-height: 1.7;
+	margin-bottom: 18px;
+  }
+
+  .terms-policy a {
+	color: #ff8800;
+	text-decoration: underline;
+	transition: color 0.2s;
+  }
+
+  .terms-policy a:hover {
+	color: #ff7b00;
+  }
+  .back-home-button {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 10px 18px;
+	background: #125ea8;
+	color: #ffffff;
+	border-radius: 6px;
+	text-decoration: none;
+	transition: background 0.2s;
+  }
+  .back-home-button:hover {
+	background: #0044ff;
+  }

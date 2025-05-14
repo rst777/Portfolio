@@ -1,0 +1,31 @@
+/* src/styles/PrivacyPolicy.css */
+.privacy-policy {
+	max-width: 800px;
+	margin: 200px auto;
+	padding: 30px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .privacy-policy h1 {
+	color: #333;
+	margin-bottom: 20px;
+  }
+  .privacy-policy p, .privacy-policy h2 {
+	color: #555;
+	line-height: 1.7;
+	margin-bottom: 16px;
+  }
+  .back-home-button {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 10px 18px;
+	background: #1976d2;
+	color: #fff;
+	border-radius: 6px;
+	text-decoration: none;
+	transition: background 0.2s;
+  }
+  .back-home-button:hover {
+	background: #125ea8;
+  }

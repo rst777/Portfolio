@@ -16,6 +16,9 @@ import PrivateRoute from './components/PrivateRoute';
 import NotFound from './components/NotFound';
 import RegisterForm from './components/RegisterForm';
 import CreateCampaignForm from './components/CreateCampaignForm';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import Cookies from './components/Cookies';
+import Terms from './components/Terms';
 
 import './styles/Responsive.css';
 import './styles/App.css';
@@ -65,6 +68,9 @@ function AppContent() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/propos" element={<AboutPage />} />
           <Route path="/register" element={<RegisterForm />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/cookies" element={<Cookies />} />
+          <Route path="/terms" element={<Terms />} />
 
           {/* Routes protégées */}
           <Route element={<PrivateRoute />}>

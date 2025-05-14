@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('authToken');
     if (token) {
       // Ici, vous pouvez décoder le token pour obtenir les informations de l'utilisateur
-      // Pour l'instant, on va juste considérer que l'utilisateur est connecté si le token existe
       setUser({ token });
     }
   }, []);
