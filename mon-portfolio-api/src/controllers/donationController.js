@@ -3,6 +3,11 @@
 const Donation = require('../models/donation.model');
 const DonationCampaign = require('../models/donationCampaign.model');
 
+/**
+ * Get all donations
+ * Retrieves all donation documents from the database, including the campaign title.
+ */
+
 // Récupère toutes les donations
 exports.getAllDonations = async (req, res) => {
   try {
@@ -17,6 +22,11 @@ exports.getAllDonations = async (req, res) => {
   }
 };
 // Cette fonction récupère toutes les donations enregistrées.
+
+/**
+ * Make a new donation
+ * Adds a new donation to a specific campaign and updates the campaign's raised amount.
+ */
 
 // Fait une nouvelle donation
 exports.makeDonation = async (req, res) => {
@@ -72,6 +82,12 @@ exports.makeDonation = async (req, res) => {
 };
 // Cette fonction permet d'ajouter un nouveau don à une campagne spécifique.
 
+/**
+ * Get a specific donation by ID
+ * Retrieves a single donation document by its ID, including the campaign title.
+ */
+
+
 // Récupère une donation spécifique par son ID
 exports.getDonationById = async (req, res) => {
   try {
@@ -92,6 +108,11 @@ exports.getDonationById = async (req, res) => {
   }
 };
 // Cette fonction récupère une donation spécifique en fonction de son ID.
+
+/**
+ * Update an existing donation
+ * Updates a donation document by its ID with the provided data.
+ */
 
 // Met à jour une donation existante
 exports.updateDonation = async (req, res) => {

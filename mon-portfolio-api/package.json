@@ -6,7 +6,8 @@
     "start": "nodemon src/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "generate-api-key": "node scripts/generateApiKey.js"
+    "generate-api-key": "node scripts/generateApiKey.js",
+    "dev": "concurrently \"npm run start --prefix backend\" \"npm run dev --prefix frontend\""
   },
   "jest": {
     "testTimeout": 10000,
@@ -51,6 +52,7 @@
     "bcrypt": "^5.1.1",
     "jest": "^29.0.0",
     "nodemon": "^3.1.9",
+    "prettier": "3.5.3",
     "supertest": "^7.0.0"
   },
   "directories": {
